@@ -1,0 +1,211 @@
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  padding:5px;
+}
+
+p,
+.notification_message {
+  line-height: 1.5;
+  text-align: justify;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: #a80c19;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #a80c19;
+}
+
+.lock_control {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.lock_control .notification {
+  border: 1px solid #a80c19;
+  background-color: white;
+  box-sizing: border-box;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  position: absolute;
+}
+
+.lock_control .notification .x_close_dialog{
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  opacity: 0.3;
+}
+.lock_control .notification .x_close_dialog:hover {
+  opacity: 0.9;
+  cursor:pointer;
+}
+.lock_control .notification .x_close_dialog:before, .lock_control .notification .x_close_dialog:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: #a80c19;
+}
+.lock_control .notification .x_close_dialog:before {
+  transform: rotate(45deg);
+}
+.lock_control .notification .x_close_dialog:after {
+  transform: rotate(-45deg);
+}
+
+.lock_control .notification .notification_title {
+  color: #a80c19;
+  margin-top: 0;
+}
+
+.notification_buttons {
+  display: block;
+  text-align: right;
+  margin-top: 30px;
+}
+
+.notification_buttons li.button {
+  display: inline-block;
+  padding: 13px 32px;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.notification_buttons li.button {
+  background-color: #a80c19;
+}
+
+.notification_buttons li.button:hover {
+  background-color: #242424;
+}
+
+@-webkit-keyframes animIn {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0
+  }
+}
+
+@keyframes animIn {
+  0% {
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
+    opacity: 0
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    -webkit-transform: translateX(100px);
+    transform: translateX(100px);
+    opacity: 0
+  }
+}
+
+.waiting {
+  margin-top: 50px;
+}
+
+.loading {
+  position: relative;
+  left: 50%;
+  height: 10px;
+  margin-bottom: 25px;
+}
+
+.loading .bullet {
+  position: absolute;
+  padding: 5px;
+  border-radius: 50%;
+  background: #a80c19;
+  -webkit-animation: animIn .8s ease-in-out 0s infinite;
+  animation: animIn .8s ease-in-out 0s infinite
+}
+
+.loading .bullet:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s
+}
+
+.loading .bullet:nth-child(2) {
+  -webkit-animation-delay: .15s;
+  animation-delay: .15s
+}
+
+.loading .bullet:nth-child(3) {
+  -webkit-animation-delay: .3s;
+  animation-delay: .3s
+}
+
+.loading .bullet:nth-child(4) {
+  -webkit-animation-delay: .45s;
+  animation-delay: .45s
+}
+
+.popup_trigger {
+  padding: 13px 32px;
+  border: 1px solid #a80c19;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  max-width: 100%;
+  box-sizing:border-box;
+}
+
+.popup_trigger:hover {
+  border-color: transparent;
+  background-color: #a80c19;
+  color: white;
+  cursor: pointer;
+}
+
+.waiting.loaded::after{
+	box-sizing:border-box;
+	content: 'It has already loaded, this is put into a content CSS attribute, so you can customize the icon';
+	display:block;
+	width:100%;
+	margin:10px 0;
+	padding:20px;
+	background-color: #23548a;
+	color:white;
+	font-style:italic;
+}

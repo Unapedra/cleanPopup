@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+	<head>
+		<link href="styles/cleanPopup.css" rel="stylesheet" type="text/CSS" />
+		<script
+		  src="https://code.jquery.com/jquery-2.2.4.min.js"
+		  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+		  crossorigin="anonymous"></script>
+		<script src="scripts/cleanPopupES5.js"></script>
+		<style>
+			.my_button{
+				background-color: yellow;
+				color: black;
+			}
+		</style>
+		<script>
+			$(document).on("click", ".popup_trigger.no-loading", function() {
+				var j = new CleanPopup(
+					"I'm a modal",
+					"<p>Here is the text.</p><p>I can have html tags like <a href='http://www.google.com'>this one</a>.</p><p>The title will always be an H3 tag.</p>", 
+					{
+						buttons: [{
+							txt: "Accept",
+							pressed: function() {
+								alert("Button Accept pressed, callback called. After callback, the popup will always close.")
+							}
+						}]
+					}
+				);
+				
+				j.show();
+			});
+			
+			$(document).on("click", ".popup_trigger.si-loading", function() {
+				var j = new CleanPopup(
+					"I'm a modal",
+					"<p>This is a loading popup. It will close after 5 seconds.</p>", 
+					{
+						permanent:true,
+						loading:true,
+						autofadeTime: 5000,
+						callbacks: {
+							opened: function(){
+								alert("It has been opened, so we call the 'opened' callback!");
+							}
+						}
+					}
+				);
+				
+				j.show();
+				
+				setTimeout(function(){
+					var h = new CleanPopup(
+						"Loaded content",
+						"<p>This is a loaded popup. It tells the user that it has already finished loading whatever it was loading.</p>", 
+						{
+							buttons: [
+								{
+									txt: 'I don\'t care',
+									pressed: function(){
+										alert("It's OK if you don't care, don't worry! But you must click 'close' because this button is set not to close the Popup!");
+									},
+									close: false,
+									extraClass: 'my_button'
+								}, {
+									txt: 'Close'
+								}
+							],
+							loaded:true,
+							callbacks: {
+								closed: function(){
+									alert("Now everything has ended, and it has been closed, so we call the 'closed' callback!");
+								}
+							}
+						}
+					);
+					
+					h.show();
+				}, 5000);
+			});
+		</script>
+	</head>
+	<body>
+		<h3>Popup sample</h3>
+		<div class="popup_trigger no-loading">
+		  <span>Click here to standard popup</span>
+		</div>
+		<div class="popup_trigger si-loading">
+		  <span>Click here to "Loading" popup</span>
+		</div>
+	</body>
+</html>
